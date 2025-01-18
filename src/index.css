@@ -1,16 +1,26 @@
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
 body {
-  min-height: 100vh;
   font-family: 'Roboto', 'Arial', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  display: flex;
-  place-items: center;
+  line-height: 1.5;
+  background-color: #f5f5f5;
 }
 
 #root {
@@ -27,5 +37,29 @@ body {
 
 main {
   flex: 1;
-  padding: 24px;
+  width: 100%;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2e7d32;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1b5e20;
+}
+
+/* Material UI overrides */
+.MuiCard-root {
+  background-color: #ffffff !important;
 }

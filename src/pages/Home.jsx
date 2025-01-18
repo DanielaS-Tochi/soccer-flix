@@ -1,6 +1,5 @@
-// src/pages/Home.jsx
 import { useState, useEffect } from 'react';
-import { Container, Typography, Grid, Box } from '@mui/material';
+import { Box, Typography, Grid } from '@mui/material';
 import VideoCard from '../components/VideoCard';
 
 const Home = () => {
@@ -43,28 +42,68 @@ const Home = () => {
   };
 
   return (
-    <Container>
+    <Box sx={{ width: '100%' }}>
       {Object.entries(videosByCategory).length === 0 ? (
-        <Box sx={{ 
-          textAlign: 'center', 
-          py: 8,
-          backgroundColor: 'background.paper',
-          borderRadius: 1,
-          mb: 3
-        }}>
-          <Typography variant="h5" color="text.secondary">
-            No videos added yet. Click on "New Video" to add your first video!
+        <Box
+          sx={{
+            textAlign: 'center',
+            py: { xs: 8, md: 12 },
+            px: { xs: 2, sm: 4 },
+            bgcolor: 'background.paper',
+            borderRadius: 2,
+            boxShadow: 1,
+            mx: 'auto',
+            maxWidth: 'sm',
+          }}
+        >
+          <Typography variant="h5" color="text.secondary" gutterBottom>
+            No videos added yet
+          </Typography>
+          <Typography color="text.secondary">
+            Click on "New Video" to add your first video!
           </Typography>
         </Box>
       ) : (
         Object.entries(videosByCategory).map(([category, categoryVideos]) => (
-          <Box key={category} sx={{ mb: 6 }}>
-            <Typography variant="h5" sx={{ mb: 3, color: 'primary.main' }}>
+          <Box 
+            key={category} 
+            sx={{ 
+              mb: { xs: 6, md: 8 },
+              '&:last-child': { mb: 0 }
+            }}
+          >
+            <Typography
+              variant="h4"
+              sx={{
+                mb: { xs: 3, md: 4 },
+                color: 'primary.main',
+                px: { xs: 1, sm: 0 },
+              }}
+            >
               {category}
             </Typography>
-            <Grid container spacing={3}>
+            <Grid 
+              container 
+              spacing={{ xs: 2, sm: 3 }}
+              columns={{ xs: 1, sm: 8, md: 12, lg: 12 }}
+              sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                '& > *': {
+                  flex: { xs: '0 0 100%', sm: '0 0 50%', md: '0 0 33.333%', lg: '0 0 25%' },
+                  maxWidth: { xs: '100%', sm: '50%', md: '33.333%', lg: '25%' },
+                },
+              }}
+            >
               {categoryVideos.map((video) => (
-                <Grid item xs={12} sm={6} md={4} key={video.id}>
+                <Grid 
+                  item 
+                  key={video.id}
+                  sx={{
+                    display: 'flex',
+                    p: { xs: 1, sm: 1.5 },
+                  }}
+                >
                   <VideoCard video={video} onDelete={handleDelete} />
                 </Grid>
               ))}
@@ -72,7 +111,7 @@ const Home = () => {
           </Box>
         ))
       )}
-    </Container>
+    </Box>
   );
 };
 
