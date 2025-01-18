@@ -84,27 +84,23 @@ const Home = () => {
             </Typography>
             <Grid 
               container 
-              spacing={{ xs: 2, sm: 3 }}
-              columns={{ xs: 1, sm: 8, md: 12, lg: 12 }}
-              sx={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                '& > *': {
-                  flex: { xs: '0 0 100%', sm: '0 0 50%', md: '0 0 33.333%', lg: '0 0 25%' },
-                  maxWidth: { xs: '100%', sm: '50%', md: '33.333%', lg: '25%' },
-                },
-              }}
+              spacing={3}
             >
               {categoryVideos.map((video) => (
                 <Grid 
                   item 
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  lg={3}
                   key={video.id}
                   sx={{
                     display: 'flex',
-                    p: { xs: 1, sm: 1.5 },
                   }}
                 >
-                  <VideoCard video={video} onDelete={handleDelete} />
+                  <Box sx={{ width: '100%', height: '100%' }}>
+                    <VideoCard video={video} onDelete={handleDelete} />
+                  </Box>
                 </Grid>
               ))}
             </Grid>
