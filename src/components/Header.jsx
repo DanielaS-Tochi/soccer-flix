@@ -6,10 +6,10 @@ import { MdAddCircle } from 'react-icons/md';
 
 const Header = () => {
   return (
-    <AppBar position="static" sx={{ mb: 2 }}>
+    <AppBar position="static" sx={{ mb: 2, bgcolor: 'primary.main' }}>
       <Toolbar>
         <Box display="flex" alignItems="center" flexGrow={1}>
-          <GiSoccerBall size={32} style={{ marginRight: '10px' }} />
+          <GiSoccerBall size={28} style={{ marginRight: '8px' }} />
           <Typography
             variant="h6"
             component={RouterLink}
@@ -17,8 +17,10 @@ const Header = () => {
             sx={{
               textDecoration: 'none',
               color: 'inherit',
-              display: 'flex',
-              alignItems: 'center',
+              fontWeight: 'bold',
+              '&:hover': {
+                color: 'secondary.light',
+              },
             }}
           >
             Soccer Flix
@@ -28,18 +30,64 @@ const Header = () => {
           component={RouterLink}
           to="/"
           color="inherit"
-          sx={{ mr: 2 }}
+          sx={{
+            mr: 2,
+            position: 'relative',
+            overflow: 'hidden',
+            '&::after': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: '-100%',
+              width: '100%',
+              height: '100%',
+              backgroundColor: 'rgba(255, 255, 255, 0.2)',
+              transform: 'skewX(-45deg)',
+              transition: 'left 0.3s ease',
+            },
+            '&:hover::after': {
+              left: '100%',
+            },
+            '&:hover': {
+              bgcolor: 'primary.light',
+              boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)',
+            },
+          }}
         >
           Home
         </Button>
+
         <Button
           component={RouterLink}
           to="/new-video"
           color="inherit"
           startIcon={<MdAddCircle />}
+          sx={{
+            position: 'relative',
+            overflow: 'hidden',
+            '&::after': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: '-100%',
+              width: '100%',
+              height: '100%',
+              backgroundColor: 'rgba(255, 255, 255, 0.2)',
+              transform: 'skewX(-45deg)',
+              transition: 'left 0.3s ease',
+            },
+            '&:hover::after': {
+              left: '100%',
+            },
+            '&:hover': {
+              bgcolor: 'primary.light',
+              boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)',
+            },
+          }}
         >
           New Video
         </Button>
+
       </Toolbar>
     </AppBar>
   );

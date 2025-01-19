@@ -3,7 +3,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  /* -webkit-text-size-adjust: 100%; */
 }
 
 * {
@@ -20,7 +20,7 @@ html, body {
 body {
   font-family: 'Roboto', 'Arial', sans-serif;
   line-height: 1.5;
-  background-color: #f5f5f5;
+  background-color: #9cf3ca;
 }
 
 #root {
@@ -40,6 +40,44 @@ main {
   width: 100%;
 }
 
+/* Grid container styles */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  justify-items: center; /* Centra las tarjetas horizontalmente */
+}
+
+
+
+/* Card styles */
+.card {
+  background-color: #ffffff;
+  border: 1px solid #2d5d25;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Zoom effect on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr); /* Two columns for medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr; /* Single column for small screens */
+  }
+}
+
 /* Scrollbar styles */
 ::-webkit-scrollbar {
   width: 8px;
@@ -51,7 +89,7 @@ main {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2e7d32;
+  background: #57d05d;
   border-radius: 4px;
 }
 
