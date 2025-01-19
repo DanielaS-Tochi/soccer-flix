@@ -20,10 +20,12 @@ const VideoCard = ({ video, onDelete }) => {
   };
 
   return (
-    <Card 
-      sx={{ 
-        height: '100%', 
-        display: 'flex', 
+    <Card
+      sx={{
+        maxWidth: '400px',
+        width: '100%',
+        margin: 'auto',
+        display: 'flex',
         flexDirection: 'column',
         transition: 'transform 0.2s, box-shadow 0.2s',
         '&:hover': {
@@ -35,12 +37,12 @@ const VideoCard = ({ video, onDelete }) => {
       <Box sx={{ position: 'relative' }}>
         <CardMedia
           component="img"
-          height="220"
-          image={video.imageUrl || 'https://via.placeholder.com/400x220?text=No+Image'}
-          alt={video.title}
           sx={{
+            aspectRatio: '16/9',
             objectFit: 'cover',
           }}
+          image={video.imageUrl || 'https://via.placeholder.com/400x220?text=No+Image'}
+          alt={video.title}
         />
         <IconButton
           onClick={handlePlay}
@@ -53,6 +55,7 @@ const VideoCard = ({ video, onDelete }) => {
             color: 'white',
             '&:hover': {
               backgroundColor: 'rgba(0, 0, 0, 0.7)',
+              boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
             },
           }}
         >
@@ -67,24 +70,27 @@ const VideoCard = ({ video, onDelete }) => {
             top: 16,
             right: 16,
             backgroundColor: 'rgba(46, 125, 50, 0.85)',
+            zIndex: 2,
           }}
         />
       </Box>
       <CardContent sx={{ flexGrow: 1, p: 2 }}>
-        <Typography 
-          gutterBottom 
-          variant="h6" 
-          component="div" 
+        <Typography
+          gutterBottom
+          variant="h6"
+          component="div"
           sx={{
             fontSize: '1.1rem',
             fontWeight: 600,
-            mb: 1,
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
           }}
         >
           {video.title}
         </Typography>
-        <Typography 
-          variant="body2" 
+        <Typography
+          variant="body2"
           color="text.secondary"
           sx={{
             overflow: 'hidden',
@@ -100,17 +106,17 @@ const VideoCard = ({ video, onDelete }) => {
         </Typography>
       </CardContent>
       <CardActions sx={{ justifyContent: 'flex-end', p: 2, pt: 0 }}>
-        <IconButton 
-          onClick={handleEdit} 
-          color="primary" 
+        <IconButton
+          onClick={handleEdit}
+          color="primary"
           aria-label="edit"
           sx={{ '&:hover': { transform: 'scale(1.1)' } }}
         >
           <MdEdit size={20} />
         </IconButton>
-        <IconButton 
-          onClick={handleDelete} 
-          color="error" 
+        <IconButton
+          onClick={handleDelete}
+          color="error"
           aria-label="delete"
           sx={{ '&:hover': { transform: 'scale(1.1)' } }}
         >

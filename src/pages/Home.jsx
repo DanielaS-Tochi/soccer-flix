@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Box, Typography, Grid } from '@mui/material';
-import VideoCard from '../components/VideoCard';
+import { Box, Typography } from '@mui/material';
+import VideoList from '../components/VideoList';
 
 const Home = () => {
   const [videos, setVideos] = useState([]);
@@ -29,7 +29,7 @@ const Home = () => {
     const updatedVideos = videos.filter(video => video.id !== videoId);
     localStorage.setItem('videos', JSON.stringify(updatedVideos));
     setVideos(updatedVideos);
-    
+
     // Update categorized videos
     const grouped = updatedVideos.reduce((acc, video) => {
       if (!acc[video.category]) {
@@ -65,9 +65,9 @@ const Home = () => {
         </Box>
       ) : (
         Object.entries(videosByCategory).map(([category, categoryVideos]) => (
-          <Box 
-            key={category} 
-            sx={{ 
+          <Box
+            key={category}
+            sx={{
               mb: { xs: 6, md: 8 },
               '&:last-child': { mb: 0 }
             }}
@@ -82,28 +82,7 @@ const Home = () => {
             >
               {category}
             </Typography>
-            <Grid 
-              container 
-              spacing={3}
-            >
-              {categoryVideos.map((video) => (
-                <Grid 
-                  item 
-                  xs={12}
-                  sm={6}
-                  md={4}
-                  lg={3}
-                  key={video.id}
-                  sx={{
-                    display: 'flex',
-                  }}
-                >
-                  <Box sx={{ width: '100%', height: '100%' }}>
-                    <VideoCard video={video} onDelete={handleDelete} />
-                  </Box>
-                </Grid>
-              ))}
-            </Grid>
+            <VideoList videos={categoryVideos} onDelete={handleDelete} />
           </Box>
         ))
       )}

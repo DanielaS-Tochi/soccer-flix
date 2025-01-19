@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import VideoForm from './pages/VideoForm';
+import './index.css';
 
 const theme = createTheme({
   palette: {
@@ -58,7 +59,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
-        <Box 
+        <Box
           className="app"
           sx={{
             minHeight: '100vh',

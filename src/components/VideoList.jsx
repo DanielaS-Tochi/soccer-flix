@@ -1,18 +1,14 @@
-// src/pages/Home.jsx
 import React from 'react';
-import VideoList from '../components/VideoList';
+import VideoCard from './VideoCard';
 
-const Home = () => {
-    const [videos, setVideos] = React.useState([
-        { id: 1, title: 'Video 1', description: 'Description 1', imageUrl: 'https://example.com/image1.jpg' },
-        { id: 2, title: 'Video 2', description: 'Description 2', imageUrl: 'https://example.com/image2.jpg' },
-    ]);
-
+const VideoList = ({ videos, onDelete }) => {
     return (
-        <div>
-            <VideoList videos={videos} />
+        <div className="grid-container">
+            {videos.map((video) => (
+                <VideoCard key={video.id} video={video} onDelete={onDelete} />
+            ))}
         </div>
     );
 };
 
-export default Home;
+export default VideoList;
