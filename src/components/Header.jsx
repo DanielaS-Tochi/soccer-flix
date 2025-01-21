@@ -3,8 +3,12 @@ import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { GiSoccerBall } from 'react-icons/gi';
 import { MdAddCircle } from 'react-icons/md';
+import useSound from 'use-sound';
+import clickSound from '../sounds/zapsplat-soccer-kick.mp3';
 
 const Header = () => {
+  const [play] = useSound(clickSound, { volume: 0.5 });
+
   return (
     <AppBar position="static" sx={{ mb: 2, bgcolor: 'primary.main' }}>
       <Toolbar>
@@ -26,7 +30,10 @@ const Header = () => {
             Soccer Flix
           </Typography>
         </Box>
+
+        {/* Botón Home con sonido */}
         <Button
+          onClick={() => play()} // Vincula play explícitamente al clic
           component={RouterLink}
           to="/"
           color="inherit"
@@ -57,7 +64,9 @@ const Header = () => {
           Home
         </Button>
 
+        {/* Botón New Video con sonido */}
         <Button
+          onClick={() => play()} // Vincula play explícitamente al clic
           component={RouterLink}
           to="/new-video"
           color="inherit"
@@ -87,7 +96,6 @@ const Header = () => {
         >
           New Video
         </Button>
-
       </Toolbar>
     </AppBar>
   );
