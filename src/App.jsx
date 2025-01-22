@@ -4,7 +4,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import VideoForm from './pages/VideoForm';
+import VideoForm from './components/VideoForm';
 import './index.css';
 
 const theme = createTheme({
