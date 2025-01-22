@@ -18,7 +18,7 @@ const useConfetti = () => {
         particleCount: 300, // Cantidad de papelitos por ráfaga
         startVelocity: 30, // Velocidad inicial
         spread: 360, // Cubre toda la pantalla
-        scalar: 2, // Tamaño de las partículas (puedes ajustar este valor)
+        scalar: 2, // Tamaño de las partículas 
         ticks: 100, // Duración de las partículas individuales
         origin: {
           x: Math.random(), // Dispersión horizontal aleatoria
